@@ -7,9 +7,6 @@ namespace Barbella.Utils.ActiveMQ
 {
     public sealed class Producer
     {
-        //====================
-        // 
-        //====================
         private IConnectionFactory _connectionFactory;
         private IConnection _connection;
         private ISession _session;
@@ -47,8 +44,6 @@ namespace Barbella.Utils.ActiveMQ
             try
             {
                 destination = _session.GetTopic(_topic);
-
-                //destination = _session.GetDestination(DESTINATION);
 
                 using (IMessageProducer producer = _session.CreateProducer(destination))
                 {

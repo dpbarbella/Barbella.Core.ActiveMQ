@@ -6,17 +6,11 @@ namespace Barbella.Utils.ActiveMQ
 {
     public sealed class Listener
     {
-        //====================
-        // 
-        //====================
         public delegate void MapMessageReceived(IMapMessage mapMessage);
         public event MapMessageReceived OnMapMessageReceived;
         public delegate void TextMessageReceived(ITextMessage textMessage);
         public event TextMessageReceived OnTextMessageReceived;
 
-        //====================
-        // 
-        //====================
         private IConnectionFactory _connectionFactory;
         private IConnection _connection;
         private ISession _session;
@@ -57,11 +51,6 @@ namespace Barbella.Utils.ActiveMQ
             {
                 destination = _session.GetTopic(_topic);
 
-                //destination = _session.GetDestination(DESTINATION);
-
-                //====================
-                // 
-                //====================
                 using (IMessageConsumer consumer = _session.CreateConsumer(destination))
                 {
                     while (true)
